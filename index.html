@@ -179,9 +179,25 @@ a{color:inherit;text-decoration:none}
   letter-spacing:.14em;text-transform:uppercase;background:var(--paper);color:var(--ink);
   padding:1.1rem 2.4rem;border-radius:2px;transition:background .35s,color .35s}
 .btn:hover{background:var(--accent);color:#fff}
-.contact .mail{position:relative;z-index:2;display:block;margin-top:2.2rem;font-weight:600;font-size:clamp(1.2rem,2.5vw,1.7rem)}
-.contact .phone{position:relative;z-index:2;display:inline-block;margin-top:.9rem;font-weight:600;font-size:1.02rem;letter-spacing:.04em;color:rgba(255,255,255,.78);transition:color .3s}
-.contact .phone:hover{color:#fff}
+.quote-form{position:relative;z-index:2;max-width:520px;margin:2.6rem auto 0;text-align:left}
+.quote-form .hp{position:absolute;left:-9999px;opacity:0}
+.fields{display:grid;gap:.8rem}
+.quote-form input,.quote-form select,.quote-form textarea{
+  width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.22);border-radius:3px;
+  color:#fff;font-family:var(--font);font-size:.96rem;font-weight:400;padding:.85rem 1rem;transition:border-color .3s,background .3s}
+.quote-form input::placeholder,.quote-form textarea::placeholder{color:rgba(255,255,255,.55)}
+.quote-form select{color:rgba(255,255,255,.55);appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23ffffff' stroke-width='1.4' fill='none'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 1rem center}
+.quote-form select:valid{color:#fff}
+.quote-form option{color:#1c1b19}
+.quote-form textarea{resize:vertical}
+.quote-form input:focus,.quote-form select:focus,.quote-form textarea:focus{outline:none;border-color:var(--sand);background:rgba(255,255,255,.1)}
+.quote-form .btn{margin-top:1.3rem;border:0;cursor:pointer;font-family:var(--font)}
+.form-note{margin-top:1rem;font-size:.92rem;min-height:1.2em;color:var(--sand)}
+.contact .direct{position:relative;z-index:2;margin-top:2.4rem;color:rgba(255,255,255,.7);font-size:.95rem}
+.contact .direct a{font-weight:600;color:#fff;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:1px}
+.contact .direct a:hover{border-color:#fff}
 
 /* ---------------- FOOTER ---------------- */
 .footer{background:#141311;color:rgba(255,255,255,.7);padding:clamp(3.5rem,8vh,6rem) var(--pad-x) 2.4rem}
@@ -194,11 +210,6 @@ a{color:inherit;text-decoration:none}
 .footer h4{font-weight:600;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--label);margin-bottom:1.1rem}
 .footer ul{list-style:none}.footer li{margin-bottom:.6rem;font-size:.92rem}
 .footer a:hover{color:#fff}
-.signup{max-width:22rem}
-.signup .row{display:flex;border:1px solid rgba(255,255,255,.25);border-radius:2px;overflow:hidden;margin-top:1rem}
-.signup input{flex:1;background:none;border:0;color:#fff;padding:.8rem 1rem;font-family:var(--font);font-size:.9rem}
-.signup input::placeholder{color:rgba(255,255,255,.5)}
-.signup button{background:#fff;color:var(--ink);border:0;padding:0 1.2rem;font-weight:600;cursor:pointer;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase}
 .footer-base{max-width:1500px;margin:3rem auto 0;padding-top:1.6rem;border-top:1px solid rgba(255,255,255,.12);
   display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.76rem;letter-spacing:.04em;opacity:.7}
 
@@ -427,11 +438,39 @@ a{color:inherit;text-decoration:none}
 <!-- ================= CONTACT ================= -->
 <section class="contact" id="contact">
   <h2>Let's plan<br>your garden.</h2>
-  <p>Tell us about your space and how you want to use it. We will arrange a time to walk the site together.</p>
-  <!-- Primary action is email; phone shown as a secondary detail. -->
-  <a class="btn" href="mailto:ross@creativegreen.com.au?subject=New%20garden%20enquiry">Get a quote</a>
-  <a class="mail" href="mailto:ross@creativegreen.com.au">ross@creativegreen.com.au</a>
-  <a class="phone" href="tel:+61406302649">0406 302 649</a>
+  <p>Tell us about your space and how you want to use it, and we will be in touch to arrange a time to walk the site together.</p>
+
+  <form class="quote-form" id="quoteForm" action="https://api.web3forms.com/submit" method="POST">
+    <!-- REPLACE with the Creative Green Web3Forms access key (web3forms.com) -->
+    <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+    <input type="hidden" name="subject" value="New quote request from creativegreen.com.au">
+    <input type="hidden" name="from_name" value="Creative Green website">
+    <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+    <div class="fields">
+      <input type="text" name="name" required placeholder="Name" aria-label="Name">
+      <input type="email" name="email" required placeholder="Email" aria-label="Email">
+      <input type="tel" name="phone" placeholder="Phone" aria-label="Phone">
+      <input type="text" name="suburb" placeholder="Suburb" aria-label="Suburb">
+      <select name="service" aria-label="What can we help with" required>
+        <option value="" disabled selected>What can we help with?</option>
+        <option>Landscaping</option>
+        <option>Construction</option>
+        <option>Horticulture</option>
+        <option>Maintenance</option>
+        <option>Not sure yet</option>
+      </select>
+      <textarea name="message" rows="4" required placeholder="Tell us about your project" aria-label="Tell us about your project"></textarea>
+    </div>
+    <button type="submit" class="btn">Get a quote</button>
+    <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
+  </form>
+
+  <p class="direct">Prefer to reach out directly?
+    <a href="mailto:ross@creativegreen.com.au">ross@creativegreen.com.au</a>
+    <span aria-hidden="true">&middot;</span>
+    <a href="tel:+61406302649">0406 302 649</a>
+  </p>
 </section>
 
 </main>
@@ -461,15 +500,6 @@ a{color:inherit;text-decoration:none}
         <li><a href="#services">Maintenance</a></li>
       </ul>
     </div>
-    <div class="signup">
-      <h4>Stay in touch</h4>
-      <p style="font-size:.92rem">Occasional notes on finished gardens and seasonal planting.</p>
-      <!-- REPLACE action with Web3Forms / preferred handler -->
-      <div class="row">
-        <input type="email" placeholder="Email address" aria-label="Email address">
-        <button type="button">Join</button>
-      </div>
-    </div>
   </div>
   <div class="footer-base">
     <span>&copy; <span id="yr"></span> Creative Green Landscaping &middot; Adelaide, South Australia</span>
@@ -478,10 +508,11 @@ a{color:inherit;text-decoration:none}
 </footer>
 
 <!-- ================= SOCIAL RAIL ================= -->
-<div class="rail" aria-label="Social links">
-  <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 9h3V6h-3c-2 0-3 1-3 3v2H9v3h2v6h3v-6h2.5l.5-3H14V9.5c0-.4.2-.5.6-.5z"/></svg></a>
-  <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 3.3.15 4.8 1.7 4.96 4.96.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.15 3.25-1.66 4.8-4.96 4.96-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-3.3-.15-4.8-1.7-4.96-4.96C2.05 15.6 2.04 15.2 2.04 12s0-3.6.07-4.9C2.26 3.85 3.77 2.3 7.07 2.14 8.4 2.08 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.5 0-4.76.07-2.4.1-3.3 1-3.4 3.4C3.77 8.5 3.76 8.8 3.76 12s0 3.5.07 4.76c.1 2.4 1 3.3 3.4 3.4 1.27.06 1.6.07 4.76.07s3.5 0 4.76-.07c2.4-.1 3.3-1 3.4-3.4.06-1.27.07-1.6.07-4.76s0-3.5-.07-4.76c-.1-2.4-1-3.3-3.4-3.4C15.5 4 15.15 4 12 4zm0 3.05A4.95 4.95 0 1 0 16.95 12 4.95 4.95 0 0 0 12 7.05zm0 8.16A3.2 3.2 0 1 1 15.2 12 3.2 3.2 0 0 1 12 15.2zm5.14-8.4a1.16 1.16 0 1 0 1.16 1.16 1.16 1.16 0 0 0-1.16-1.16z"/></svg></a>
-  <a href="mailto:ross@creativegreen.com.au" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.2L4.3 7H19.7zM4 8.3V17h16V8.3l-8 5z"/></svg></a>
+<div class="rail" aria-label="Contact and social links">
+  <a href="https://www.facebook.com/creativegreenlandscaping" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 9h3V6h-3c-2 0-3 1-3 3v2H9v3h2v6h3v-6h2.5l.5-3H14V9.5c0-.4.2-.5.6-.5z"/></svg></a>
+  <a href="https://www.instagram.com/creativegreenlandscaping/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 3.3.15 4.8 1.7 4.96 4.96.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.15 3.25-1.66 4.8-4.96 4.96-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-3.3-.15-4.8-1.7-4.96-4.96C2.05 15.6 2.04 15.2 2.04 12s0-3.6.07-4.9C2.26 3.85 3.77 2.3 7.07 2.14 8.4 2.08 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.5 0-4.76.07-2.4.1-3.3 1-3.4 3.4C3.77 8.5 3.76 8.8 3.76 12s0 3.5.07 4.76c.1 2.4 1 3.3 3.4 3.4 1.27.06 1.6.07 4.76.07s3.5 0 4.76-.07c2.4-.1 3.3-1 3.4-3.4.06-1.27.07-1.6.07-4.76s0-3.5-.07-4.76c-.1-2.4-1-3.3-3.4-3.4C15.5 4 15.15 4 12 4zm0 3.05A4.95 4.95 0 1 0 16.95 12 4.95 4.95 0 0 0 12 7.05zm0 8.16A3.2 3.2 0 1 1 15.2 12 3.2 3.2 0 0 1 12 15.2zm5.14-8.4a1.16 1.16 0 1 0 1.16 1.16 1.16 1.16 0 0 0-1.16-1.16z"/></svg></a>
+  <a href="tel:+61406302649" aria-label="Call 0406 302 649"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a13 13 0 0 0 5.7 5.7l1.9-1.9c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V19c0 .6-.4 1-1 1A16 16 0 0 1 4 5c0-.6.4-1 1-1h2.9c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.3 1z"/></svg></a>
+  <a href="#contact" aria-label="Send an enquiry"><svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.2L4.3 7H19.7zM4 8.3V17h16V8.3l-8 5z"/></svg></a>
 </div>
 
 <script type="application/ld+json">
@@ -531,6 +562,31 @@ a{color:inherit;text-decoration:none}
     g.querySelector('[data-prev]').addEventListener('click', function(){ go(idx-1); });
     g.querySelector('[data-next]').addEventListener('click', function(){ go(idx+1); });
   });
+
+  /* quote form: submit without leaving the page */
+  var qf = document.getElementById('quoteForm');
+  if(qf){
+    var note = document.getElementById('formNote');
+    qf.addEventListener('submit', function(e){
+      e.preventDefault();
+      var btn = qf.querySelector('button[type="submit"]');
+      var key = qf.querySelector('[name="access_key"]').value;
+      if(key === 'YOUR_WEB3FORMS_ACCESS_KEY'){
+        note.textContent = 'Form is not connected yet. Add your Web3Forms access key.';
+        return;
+      }
+      btn.disabled = true; var label = btn.textContent; btn.textContent = 'Sending...';
+      note.textContent = '';
+      fetch(qf.action, {method:'POST', body:new FormData(qf), headers:{'Accept':'application/json'}})
+        .then(function(r){ return r.json(); })
+        .then(function(data){
+          if(data.success){ qf.reset(); note.textContent = 'Thanks, we have your details and will be in touch shortly.'; }
+          else { note.textContent = 'Something went wrong. Please email ross@creativegreen.com.au.'; }
+        })
+        .catch(function(){ note.textContent = 'Something went wrong. Please email ross@creativegreen.com.au.'; })
+        .finally(function(){ btn.disabled = false; btn.textContent = label; });
+    });
+  }
 
   document.getElementById('yr').textContent=new Date().getFullYear();
 })();
