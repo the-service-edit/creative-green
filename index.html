@@ -9,8 +9,8 @@
      Built to mirror the Artisan Exterior design DNA:
        bold rounded sans, solid white nav, flush two-up image
        grid with heavy white word labels, rotated sidebar labels,
-       concentric-arc watermark, muted heading accent, fixed
-       social rail, numbered testimonial counter.
+       muted heading accent, fixed social rail,
+       numbered testimonial counter.
      All copy + branding original. Imagery is placeholder.
      Swap every image marked  REPLACE  with client photography.
      House style: Australian English, no em-dashes, no urgency
@@ -26,6 +26,7 @@
 <meta property="og:description" content="Considered outdoor spaces for Adelaide homes. Designed and constructed by one team.">
 <meta property="og:locale" content="en_AU">
 <meta property="og:url" content="https://www.creativegreen.com.au/">
+<meta property="og:image" content="https://www.creativegreen.com.au/assets/hero.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,7 +60,9 @@ a{color:inherit;text-decoration:none}
   display:flex;align-items:center;justify-content:space-between;
   height:var(--nav-h);padding:0 var(--pad-x);transition:box-shadow .4s ease,height .4s ease}
 .nav.scrolled{box-shadow:0 1px 0 var(--line);height:68px}
-.logo{display:flex;align-items:baseline;gap:.55rem;line-height:1}
+.logo{display:flex;align-items:center;gap:.6rem;line-height:1}
+.logo-mark{height:42px;width:auto;flex:none;transition:height .4s ease}
+.nav.scrolled .logo-mark{height:34px}
 .logo b{font-weight:700;font-size:1.7rem;letter-spacing:-.02em}
 .logo span{font-weight:300;font-size:.85rem;letter-spacing:.34em;text-transform:uppercase;color:var(--ink)}
 .nav .menu{display:flex;align-items:center;gap:clamp(1.4rem,2.6vw,2.8rem)}
@@ -70,11 +73,6 @@ a{color:inherit;text-decoration:none}
 .burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
 .burger span{width:26px;height:2px;background:var(--ink);display:block;transition:.3s}
 
-/* ---------------- arc watermark ---------------- */
-.arc{position:absolute;pointer-events:none;z-index:1;opacity:.5}
-.arc svg{display:block;width:100%;height:100%}
-.arc circle,.arc path{fill:none;stroke:var(--ink);stroke-width:1;opacity:.18}
-.arc.light circle,.arc.light path{stroke:#fff;opacity:.45}
 
 /* rotated side label */
 .side-label{position:absolute;left:.4rem;writing-mode:vertical-rl;transform:rotate(180deg);
@@ -86,8 +84,7 @@ a{color:inherit;text-decoration:none}
 .hero .media img{animation:zoom 26s ease-out infinite alternate}
 @keyframes zoom{from{transform:scale(1)}to{transform:scale(1.09)}}
 .hero::after{content:"";position:absolute;inset:0;z-index:1;
-  background:linear-gradient(90deg,rgba(20,19,17,.42),rgba(20,19,17,.05) 55%,transparent)}
-.hero .arc{top:-6%;left:-4%;width:min(46vw,520px);aspect-ratio:1}
+  background:linear-gradient(to top,rgba(20,19,17,.62),rgba(20,19,17,.15) 38%,transparent 68%),linear-gradient(90deg,rgba(20,19,17,.38),transparent 52%)}
 .hero-copy{position:absolute;left:var(--pad-x);bottom:clamp(2.4rem,7vh,5.5rem);z-index:3;color:#fff;max-width:40rem}
 .hero-copy h1{font-weight:700;font-size:clamp(3rem,8vw,6.6rem);line-height:.96;letter-spacing:-.02em}
 .hero-copy p{font-weight:400;font-size:clamp(1rem,1.4vw,1.25rem);margin-top:1.1rem;max-width:34ch}
@@ -111,7 +108,6 @@ a{color:inherit;text-decoration:none}
 .statement{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
 .statement .media{min-height:clamp(420px,70vh,760px)}
 .statement .text{padding:clamp(3rem,7vw,7rem) clamp(2rem,5vw,6rem);display:flex;flex-direction:column;justify-content:center;position:relative}
-.statement .arc{right:-12%;top:50%;transform:translateY(-50%);width:min(40vw,460px);aspect-ratio:1}
 .statement h2{font-weight:700;font-size:clamp(2rem,4.2vw,3.6rem);line-height:1.04;letter-spacing:-.02em;position:relative;z-index:2}
 .statement p{margin-top:1.6rem;max-width:46ch;color:var(--soft);font-weight:400;font-size:1.02rem;position:relative;z-index:2}
 
@@ -124,7 +120,6 @@ a{color:inherit;text-decoration:none}
 
 /* ---------------- ABOUT + TESTIMONIALS ---------------- */
 .about{position:relative;background:var(--mist);padding:clamp(4rem,9vh,8rem) var(--pad-x)}
-.about .arc{right:6%;top:18%;width:min(34vw,420px);aspect-ratio:1}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.5rem,6vw,6rem);max-width:1500px;margin:0 auto;position:relative;z-index:2}
 .h-accent{font-weight:700;font-size:clamp(2.6rem,5.5vw,4.6rem);color:var(--accent);letter-spacing:-.02em;line-height:1}
 .about .statement-line{font-weight:600;font-size:clamp(1.3rem,2.2vw,1.85rem);line-height:1.3;margin:1.8rem 0 1.4rem;max-width:30ch}
@@ -170,7 +165,6 @@ a{color:inherit;text-decoration:none}
 
 /* ---------------- CONTACT ---------------- */
 .contact{position:relative;background:var(--ink);color:var(--paper);text-align:center;padding:clamp(5rem,12vh,10rem) var(--pad-x);overflow:hidden}
-.contact .arc{left:50%;top:50%;transform:translate(-50%,-50%);width:min(70vw,640px);aspect-ratio:1}
 .contact h2{font-weight:700;font-size:clamp(2.6rem,7vw,6rem);line-height:.98;letter-spacing:-.02em;position:relative;z-index:2}
 .contact p{position:relative;z-index:2;max-width:42ch;margin:1.6rem auto 2.4rem;color:rgba(255,255,255,.78)}
 .btn{position:relative;z-index:2;display:inline-flex;align-items:center;gap:.8rem;font-weight:600;font-size:.86rem;
@@ -238,7 +232,7 @@ a{color:inherit;text-decoration:none}
 <!-- ================= NAV ================= -->
 <header class="nav" id="nav">
   <a class="logo" href="#top" aria-label="Creative Green Landscaping home">
-    <b>creativegreen</b><span>Landscapes</span>
+    <img class="logo-mark" src="assets/logo.png" alt=""><b>creativegreen</b><span>Landscapes</span>
   </a>
   <nav class="menu" aria-label="Primary">
     <a href="#about">About</a>
@@ -263,9 +257,7 @@ a{color:inherit;text-decoration:none}
 
 <!-- ================= HERO ================= -->
 <section class="hero">
-  <div class="arc light"><svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="98"/><circle cx="100" cy="100" r="74"/><circle cx="100" cy="100" r="50"/><path d="M2 150 L2 198 L50 198"/></svg></div>
-  <!-- REPLACE: luxury Adelaide outdoor entertaining space, natural daylight -->
-  <div class="media"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=2400&q=80&auto=format&fit=crop" alt="Contemporary Adelaide home with limestone walls, established garden and entertaining terrace" onerror="this.style.display='none'"></div>
+  <div class="media"><img src="assets/hero.jpg" alt="Courtyard garden at dusk with rendered white walls, a built-in outdoor kitchen, feature wall lighting and established olive and native planting over stone paving" onerror="this.style.display='none'"></div>
   <span class="side-label">Projects</span>
   <div class="hero-copy">
     <h1 class="word">Garden<br>+ Living</h1>
@@ -302,7 +294,6 @@ a{color:inherit;text-decoration:none}
   <!-- REPLACE: poolside entertaining detail, natural daylight -->
   <div class="media"><img src="https://images.unsplash.com/photo-1605146769289-440113cc3d00?w=1600&q=80&auto=format&fit=crop" alt="Poolside entertaining area with stone walls and feature lighting" onerror="this.style.display='none'"></div>
   <div class="text">
-    <div class="arc"><svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="98"/><circle cx="100" cy="100" r="72"/><circle cx="100" cy="100" r="46"/></svg></div>
     <h2 class="reveal">Good gardens are built once, and lived in for years.</h2>
     <p class="reveal">We take on a small number of gardens each year and handle design and construction under one roof. The idea you fall for is the garden you end up with. Stone, timber, water and planting, drawn together with patience and built to settle in and improve with every season.</p>
   </div>
@@ -333,7 +324,6 @@ a{color:inherit;text-decoration:none}
 <!-- ================= ABOUT + TESTIMONIALS ================= -->
 <section class="about" id="about">
   <span class="side-label">Who we are</span>
-  <div class="arc"><svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="98"/><circle cx="100" cy="100" r="70"/><circle cx="100" cy="100" r="42"/><path d="M150 2 L198 2 L198 50"/></svg></div>
   <div class="about-grid">
     <div class="reveal">
       <h2 class="h-accent">About.</h2>
@@ -384,7 +374,6 @@ a{color:inherit;text-decoration:none}
 
 <!-- ================= CONTACT ================= -->
 <section class="contact" id="contact">
-  <div class="arc light"><svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="98"/><circle cx="100" cy="100" r="74"/><circle cx="100" cy="100" r="50"/><circle cx="100" cy="100" r="26"/></svg></div>
   <h2>Let's plan<br>your garden.</h2>
   <p>Tell us about your space and how you want to use it. We will arrange a time to walk the site together.</p>
   <!-- House style: email-led, no phone as primary. REPLACE email with client address. -->
@@ -398,7 +387,7 @@ a{color:inherit;text-decoration:none}
 <footer class="footer">
   <div class="footer-grid">
     <div>
-      <span class="logo"><b>creativegreen</b><span>Landscapes</span></span>
+      <span class="logo"><img class="logo-mark" src="assets/logo.png" alt=""><b>creativegreen</b><span>Landscapes</span></span>
       <p class="blurb">Landscape construction and garden design across Adelaide and the Hills.</p>
     </div>
     <div>
