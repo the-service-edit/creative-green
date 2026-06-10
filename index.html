@@ -104,12 +104,12 @@ a{color:inherit;text-decoration:none}
   transition:max-height .55s cubic-bezier(.16,1,.3,1),opacity .4s ease}
 .cell .sublist li{font-size:clamp(.78rem,1.05vw,.94rem);font-weight:400;line-height:1.55;
   border-top:1px solid rgba(255,255,255,.24);padding:.32rem 0}
-.cell:hover .sublist,.cell:focus-within .sublist{max-height:26rem;opacity:1}
+.cell:hover .sublist,.cell:focus-within .sublist,.cell.open .sublist{max-height:26rem;opacity:1}
 .cell-cta{display:inline-flex;align-items:center;gap:.6rem;margin-top:1.3rem;color:#fff;font-weight:600;
   font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;opacity:0;transform:translateY(8px);
   transition:opacity .4s ease .06s,transform .4s ease .06s}
 .cell-cta svg{width:28px;height:10px}
-.cell:hover .cell-cta,.cell:focus-within .cell-cta{opacity:1;transform:none}
+.cell:hover .cell-cta,.cell:focus-within .cell-cta,.cell.open .cell-cta{opacity:1;transform:none}
 
 /* ---------------- EDITORIAL TEXT BLOCK ---------------- */
 .statement{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
@@ -228,18 +228,17 @@ a{color:inherit;text-decoration:none}
   .logo b{font-size:1.35rem}
   .logo-mark{height:34px}
   body{padding-bottom:64px}
+  .hero-copy{bottom:clamp(4.5rem,11vh,8rem)}
   .duo{grid-template-columns:1fr}
   .statement{grid-template-columns:1fr}
   .statement .media{min-height:56vh}
-  /* service tiles: image on top, full list shown below it (no hover needed) */
-  .cell{aspect-ratio:auto}
-  .cell .media{aspect-ratio:16/10}
-  .cell::after{display:none}
-  .cell-body{position:static;color:var(--ink);padding:1.3rem 0 0}
-  .cell .word{color:var(--ink)}
-  .cell .sublist{max-height:none;opacity:1;margin-top:.9rem}
-  .cell .sublist li{border-top-color:var(--line);color:var(--soft)}
-  .cell .cell-cta{opacity:1;transform:none;color:var(--accent);margin-top:1.1rem}
+  /* service tiles: overlay design with tap to expand */
+  .cell{aspect-ratio:1/1;display:flex;flex-direction:column;justify-content:flex-end;min-height:78vw;cursor:pointer}
+  .cell .media{position:absolute;inset:0;z-index:0}
+  .cell-body{position:relative;inset:auto;z-index:2}
+  .cell::after{background:linear-gradient(to top,rgba(20,19,17,.62),transparent 60%)}
+  .cell.open{aspect-ratio:auto}
+  .cell.open::after{background:linear-gradient(to top,rgba(20,19,17,.85),rgba(20,19,17,.5))}
   .about-grid{grid-template-columns:1fr;gap:3.5rem}
   .rail{flex-direction:row;top:auto;bottom:0;right:0;left:0;transform:none;justify-content:center;background:var(--paper);padding:.7rem;gap:1rem;box-shadow:0 -1px 0 var(--line)}
   .side-label{display:none}
@@ -294,7 +293,7 @@ a{color:inherit;text-decoration:none}
 <!-- ================= SERVICES AS LABELLED GRID ================= -->
 <section id="services" aria-label="Services">
   <div class="duo">
-    <a class="cell" href="#contact"><!-- REPLACE image -->
+    <div class="cell" role="button" tabindex="0" aria-expanded="false"><!-- REPLACE image -->
       <div class="media"><img src="assets/landscaping.jpg" alt="Designed garden with structured planting and a built landscape" onerror="this.style.display='none'"></div>
       <div class="cell-body">
         <span class="word">Landscaping.</span>
@@ -306,10 +305,10 @@ a{color:inherit;text-decoration:none}
           <li>Swimming pools and ponds</li>
           <li>Irrigation supply and installation</li>
         </ul>
-        <span class="cell-cta">Get a quote <svg viewBox="0 0 28 10" aria-hidden="true"><path d="M0 5 H24 M20 1 L25 5 L20 9" stroke="currentColor" fill="none" stroke-width="1.3"/></svg></span>
+        <a class="cell-cta" href="#contact">Get a quote <svg viewBox="0 0 28 10" aria-hidden="true"><path d="M0 5 H24 M20 1 L25 5 L20 9" stroke="currentColor" fill="none" stroke-width="1.3"/></svg></a>
       </div>
-    </a>
-    <a class="cell" href="#contact"><!-- REPLACE image -->
+    </div>
+    <div class="cell" role="button" tabindex="0" aria-expanded="false"><!-- REPLACE image -->
       <div class="media"><img src="assets/construction.jpg" alt="Stone walls, paving and built features in a constructed garden" onerror="this.style.display='none'"></div>
       <div class="cell-body">
         <span class="word">Construction.</span>
@@ -323,12 +322,12 @@ a{color:inherit;text-decoration:none}
           <li>Masonry planters and features</li>
           <li>Retaining walls</li>
         </ul>
-        <span class="cell-cta">Get a quote <svg viewBox="0 0 28 10" aria-hidden="true"><path d="M0 5 H24 M20 1 L25 5 L20 9" stroke="currentColor" fill="none" stroke-width="1.3"/></svg></span>
+        <a class="cell-cta" href="#contact">Get a quote <svg viewBox="0 0 28 10" aria-hidden="true"><path d="M0 5 H24 M20 1 L25 5 L20 9" stroke="currentColor" fill="none" stroke-width="1.3"/></svg></a>
       </div>
-    </a>
+    </div>
   </div>
   <div class="duo">
-    <a class="cell" href="#contact"><!-- REPLACE image -->
+    <div class="cell" role="button" tabindex="0" aria-expanded="false"><!-- REPLACE image -->
       <div class="media"><img src="assets/horticulture.jpg" alt="Established planting and native garden beds" onerror="this.style.display='none'"></div>
       <div class="cell-body">
         <span class="word">Horticulture.</span>
@@ -339,10 +338,10 @@ a{color:inherit;text-decoration:none}
           <li>Vegetable gardens</li>
           <li>Irrigation</li>
         </ul>
-        <span class="cell-cta">Get a quote <svg viewBox="0 0 28 10" aria-hidden="true"><path d="M0 5 H24 M20 1 L25 5 L20 9" stroke="currentColor" fill="none" stroke-width="1.3"/></svg></span>
+        <a class="cell-cta" href="#contact">Get a quote <svg viewBox="0 0 28 10" aria-hidden="true"><path d="M0 5 H24 M20 1 L25 5 L20 9" stroke="currentColor" fill="none" stroke-width="1.3"/></svg></a>
       </div>
-    </a>
-    <a class="cell" href="#contact"><!-- REPLACE image -->
+    </div>
+    <div class="cell" role="button" tabindex="0" aria-expanded="false"><!-- REPLACE image -->
       <div class="media"><img src="assets/maintenance.jpg" alt="A well maintained established garden with lawn and planting" onerror="this.style.display='none'"></div>
       <div class="cell-body">
         <span class="word">Maintenance.</span>
@@ -353,9 +352,9 @@ a{color:inherit;text-decoration:none}
           <li>Painting and staining</li>
           <li>Pressure washing</li>
         </ul>
-        <span class="cell-cta">Get a quote <svg viewBox="0 0 28 10" aria-hidden="true"><path d="M0 5 H24 M20 1 L25 5 L20 9" stroke="currentColor" fill="none" stroke-width="1.3"/></svg></span>
+        <a class="cell-cta" href="#contact">Get a quote <svg viewBox="0 0 28 10" aria-hidden="true"><path d="M0 5 H24 M20 1 L25 5 L20 9" stroke="currentColor" fill="none" stroke-width="1.3"/></svg></a>
       </div>
-    </a>
+    </div>
   </div>
 </section>
 
@@ -532,6 +531,22 @@ a{color:inherit;text-decoration:none}
 
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
   document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+  /* service tiles: tap to expand on touch devices (desktop uses hover) */
+  var noHover = window.matchMedia('(hover: none)');
+  document.querySelectorAll('.cell').forEach(function(cell){
+    function toggle(e){
+      if(e.target.closest('.cell-cta')) return; // let the CTA link work
+      if(!noHover.matches) return;               // touch only
+      e.preventDefault();
+      var open = cell.classList.toggle('open');
+      cell.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    cell.addEventListener('click', toggle);
+    cell.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ toggle(e); }
+    });
+  });
 
   /* before / after gallery: press to see the next garden */
   document.querySelectorAll('[data-gallery]').forEach(function(g){
