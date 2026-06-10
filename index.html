@@ -95,14 +95,16 @@ a{color:inherit;text-decoration:none}
 .cell{position:relative;aspect-ratio:1/1;overflow:hidden;display:block}
 .cell img{transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
 .cell:hover img{transform:scale(1.05)}
-.cell::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(20,19,17,.55),transparent 55%)}
-.cell .word{position:absolute;left:clamp(1.1rem,2.4vw,2.6rem);bottom:clamp(1rem,2.4vw,2.2rem);z-index:2;
-  color:#fff;font-size:clamp(2rem,4.6vw,3.6rem)}
-.cell .tag{position:absolute;left:clamp(1.1rem,2.4vw,2.6rem);bottom:clamp(.6rem,1.4vw,1.1rem);z-index:2;
-  color:rgba(255,255,255,.8);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
-  opacity:0;transform:translateY(6px);transition:opacity .4s ease,transform .4s ease}
-.cell:hover .tag{opacity:1;transform:none}
-.cell:hover .word{bottom:clamp(1.7rem,3.4vw,3rem);transition:bottom .4s ease}
+.cell::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(20,19,17,.55),transparent 58%);transition:background .5s ease}
+.cell:hover::after{background:linear-gradient(to top,rgba(20,19,17,.85),rgba(20,19,17,.5))}
+.cell-body{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:clamp(1.1rem,2.4vw,2.4rem);color:#fff}
+.cell .word{font-size:clamp(1.9rem,4.3vw,3.3rem)}
+.cell .sublist{list-style:none;margin-top:1rem;max-height:0;opacity:0;overflow:hidden;
+  transition:max-height .55s cubic-bezier(.16,1,.3,1),opacity .4s ease}
+.cell .sublist li{font-size:clamp(.78rem,1.05vw,.94rem);font-weight:400;line-height:1.55;
+  border-top:1px solid rgba(255,255,255,.24);padding:.32rem 0}
+.cell:hover .sublist,.cell:focus-within .sublist{max-height:26rem;opacity:1}
 
 /* ---------------- EDITORIAL TEXT BLOCK ---------------- */
 .statement{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
@@ -208,7 +210,9 @@ a{color:inherit;text-decoration:none}
 @media (max-width:880px){
   .nav .menu{display:none}.burger{display:flex}
   .duo{grid-template-columns:1fr}
-  .cell{aspect-ratio:4/3}
+  .cell{aspect-ratio:auto;min-height:60vw}
+  .cell .sublist{max-height:26rem;opacity:1}
+  .cell::after{background:linear-gradient(to top,rgba(20,19,17,.82),rgba(20,19,17,.45))}
   .statement{grid-template-columns:1fr}
   .statement .media{min-height:60vh}
   .about-grid{grid-template-columns:1fr;gap:3.5rem}
@@ -268,23 +272,63 @@ a{color:inherit;text-decoration:none}
 <!-- ================= SERVICES AS LABELLED GRID ================= -->
 <section id="services" aria-label="Services">
   <div class="duo">
-    <a class="cell" href="#contact"><!-- REPLACE -->
-      <div class="media"><img src="https://images.unsplash.com/photo-1558521958-0a228e77fc99?w=1400&q=80&auto=format&fit=crop" alt="Landscape construction across a residential garden" onerror="this.style.display='none'"></div>
-      <span class="word">Construction.</span><span class="tag">End to end, one team</span>
+    <a class="cell" href="#contact"><!-- REPLACE image -->
+      <div class="media"><img src="assets/landscaping.jpg" alt="Designed garden with structured planting and a built landscape" onerror="this.style.display='none'"></div>
+      <div class="cell-body">
+        <span class="word">Landscaping.</span>
+        <ul class="sublist">
+          <li>Consultation</li>
+          <li>Design and planning</li>
+          <li>Outdoor renovations</li>
+          <li>Complete landscape construction</li>
+          <li>Swimming pools and ponds</li>
+          <li>Irrigation supply and installation</li>
+        </ul>
+      </div>
     </a>
-    <a class="cell" href="#contact"><!-- REPLACE -->
-      <div class="media"><img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=1400&q=80&auto=format&fit=crop" alt="Designed garden with structured planting and clean lines" onerror="this.style.display='none'"></div>
-      <span class="word">Design.</span><span class="tag">Drawn for how you live</span>
+    <a class="cell" href="#contact"><!-- REPLACE image -->
+      <div class="media"><img src="assets/construction.jpg" alt="Stone walls, paving and built features in a constructed garden" onerror="this.style.display='none'"></div>
+      <div class="cell-body">
+        <span class="word">Construction.</span>
+        <ul class="sublist">
+          <li>Timber features</li>
+          <li>Fencing and glass pool fencing</li>
+          <li>Paving and decking</li>
+          <li>Water features</li>
+          <li>Stone walls</li>
+          <li>Feature walls and screening</li>
+          <li>Masonry planters and features</li>
+          <li>Retaining walls</li>
+        </ul>
+      </div>
     </a>
   </div>
   <div class="duo">
-    <a class="cell" href="#contact"><!-- REPLACE -->
-      <div class="media"><img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?w=1400&q=80&auto=format&fit=crop" alt="Stacked stone retaining wall holding a terraced garden" onerror="this.style.display='none'"></div>
-      <span class="word">Retaining.</span><span class="tag">Stone that holds for good</span>
+    <a class="cell" href="#contact"><!-- REPLACE image -->
+      <div class="media"><img src="assets/horticulture.jpg" alt="Established planting and native garden beds" onerror="this.style.display='none'"></div>
+      <div class="cell-body">
+        <span class="word">Horticulture.</span>
+        <ul class="sublist">
+          <li>Tree services</li>
+          <li>Hedges</li>
+          <li>Plant supply and planting</li>
+          <li>Vegetable gardens</li>
+          <li>Irrigation</li>
+        </ul>
+      </div>
     </a>
-    <a class="cell" href="#contact"><!-- REPLACE -->
-      <div class="media"><img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1400&q=80&auto=format&fit=crop" alt="Natural stone and limestone paving" onerror="this.style.display='none'"></div>
-      <span class="word">Paving.</span><span class="tag">Limestone, stone, crazy pave</span>
+    <a class="cell" href="#contact"><!-- REPLACE image -->
+      <div class="media"><img src="assets/maintenance.jpg" alt="A well maintained established garden with lawn and planting" onerror="this.style.display='none'"></div>
+      <div class="cell-body">
+        <span class="word">Maintenance.</span>
+        <ul class="sublist">
+          <li>Establishment contracts</li>
+          <li>Lawn and gardens</li>
+          <li>Irrigation</li>
+          <li>Painting and staining</li>
+          <li>Pressure washing</li>
+        </ul>
+      </div>
     </a>
   </div>
 </section>
@@ -302,23 +346,8 @@ a{color:inherit;text-decoration:none}
 <!-- ================= FULL-WIDTH FEATURE ================= -->
 <section class="feature" id="projects">
   <span class="side-label" style="color:rgba(255,255,255,.85)">Our work</span>
-  <!-- REPLACE: native garden / planting feature, natural daylight -->
-  <div class="media"><img src="https://images.unsplash.com/photo-1597149960419-e0d6b5e3a4f6?w=2400&q=80&auto=format&fit=crop" alt="Native Australian garden with established planting against a concrete wall" onerror="this.style.display='none'"></div>
-  <span class="word">Planting.</span>
-</section>
-
-<!-- ================= TWO-UP GRID ================= -->
-<section aria-label="More services">
-  <div class="duo">
-    <a class="cell" href="#contact"><!-- REPLACE -->
-      <div class="media"><img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1400&q=80&auto=format&fit=crop" alt="Timber decking sitting level with the living floor" onerror="this.style.display='none'"></div>
-      <span class="word">Decking.</span><span class="tag">Timber, level with the home</span>
-    </a>
-    <a class="cell" href="#contact"><!-- REPLACE -->
-      <div class="media"><img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=1400&q=80&auto=format&fit=crop" alt="Outdoor living and entertaining area at dusk with feature lighting" onerror="this.style.display='none'"></div>
-      <span class="word">Outdoor Living.</span><span class="tag">Kitchens, pools, lighting</span>
-    </a>
-  </div>
+  <!-- REPLACE: full-width project / planting feature, natural daylight -->
+  <div class="media"><img src="https://images.unsplash.com/photo-1597149960419-e0d6b5e3a4f6?w=2400&q=80&auto=format&fit=crop" alt="Established Adelaide garden with mature planting" onerror="this.style.display='none'"></div>
 </section>
 
 <!-- ================= ABOUT + TESTIMONIALS ================= -->
@@ -402,10 +431,10 @@ a{color:inherit;text-decoration:none}
     <div>
       <h4>Services</h4>
       <ul>
-        <li><a href="#services">Landscape Construction</a></li>
-        <li><a href="#services">Garden Design</a></li>
-        <li><a href="#services">Retaining &amp; Paving</a></li>
-        <li><a href="#services">Decking &amp; Outdoor Living</a></li>
+        <li><a href="#services">Landscaping</a></li>
+        <li><a href="#services">Construction</a></li>
+        <li><a href="#services">Horticulture</a></li>
+        <li><a href="#services">Maintenance</a></li>
       </ul>
     </div>
     <div class="signup">
@@ -432,7 +461,7 @@ a{color:inherit;text-decoration:none}
 </div>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"LandscapingBusiness","name":"Creative Green Landscaping","description":"Landscape construction and garden design across Adelaide.","areaServed":"Adelaide, South Australia","email":"hello@creativegreen.com.au","url":"https://www.creativegreen.com.au/","address":{"@type":"PostalAddress","addressLocality":"Adelaide","addressRegion":"SA","addressCountry":"AU"},"knowsAbout":["Landscape Construction","Garden Design","Retaining Walls","Paving","Decking","Planting","Irrigation","Outdoor Living"]}
+{"@context":"https://schema.org","@type":"LandscapingBusiness","name":"Creative Green Landscaping","description":"Landscape construction and garden design across Adelaide.","areaServed":"Adelaide, South Australia","email":"hello@creativegreen.com.au","url":"https://www.creativegreen.com.au/","address":{"@type":"PostalAddress","addressLocality":"Adelaide","addressRegion":"SA","addressCountry":"AU"},"knowsAbout":["Landscaping","Landscape Construction","Garden Design","Horticulture","Tree Services","Paving","Decking","Retaining Walls","Irrigation","Garden Maintenance"]}
 </script>
 
 <script>
