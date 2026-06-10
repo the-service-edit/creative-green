@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ============================================================
+     CREATIVE GREEN LANDSCAPING / Adelaide
+     Built to mirror the Artisan Exterior design DNA:
+       bold rounded sans, solid white nav, flush two-up image
+       grid with heavy white word labels, rotated sidebar labels,
+       concentric-arc watermark, muted heading accent, fixed
+       social rail, numbered testimonial counter.
+     All copy + branding original. Imagery is placeholder.
+     Swap every image marked  REPLACE  with client photography.
+     House style: Australian English, no em-dashes, no urgency
+     or discount language, email-led CTA, plain direct voice.
+     ============================================================ -->
+
+<title>Creative Green Landscaping | Landscape Construction & Garden Design Adelaide</title>
+<meta name="description" content="Creative Green Landscaping designs and builds premium gardens, paving, retaining walls and decking across Adelaide. Considered outdoor spaces, built by one team.">
+<meta name="keywords" content="Landscape Construction Adelaide, Landscaping Adelaide, Garden Design Adelaide, Retaining Walls Adelaide, Decking Adelaide, Paving Adelaide">
+<link rel="canonical" href="https://www.creativegreen.com.au/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Creative Green Landscaping | Adelaide">
+<meta property="og:description" content="Considered outdoor spaces for Adelaide homes. Designed and constructed by one team.">
+<meta property="og:locale" content="en_AU">
+<meta property="og:url" content="https://www.creativegreen.com.au/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --paper:#ffffff;
+  --mist:#f4f2ee;          /* warm light band */
+  --ink:#1c1b19;           /* near-black body */
+  --soft:#54514b;          /* secondary text */
+  --accent:#76795c;        /* muted olive heading accent (mirrors Artisan mauve) */
+  --label:#8c8e72;         /* small uppercase labels */
+  --line:rgba(28,27,25,.14);
+  --font:"Montserrat",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --pad-x:clamp(1.25rem,5vw,5.5rem);
+  --nav-h:84px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);font-weight:400;color:var(--ink);background:var(--paper);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit;text-decoration:none}
+.media{position:relative;overflow:hidden;background:#e3ddd2}
+
+/* heavy bold display word, with full stop, over imagery */
+.word{font-weight:700;letter-spacing:-.01em;line-height:.95}
+
+/* ---------------- NAV ---------------- */
+.nav{position:sticky;top:0;z-index:90;background:var(--paper);
+  display:flex;align-items:center;justify-content:space-between;
+  height:var(--nav-h);padding:0 var(--pad-x);transition:box-shadow .4s ease,height .4s ease}
+.nav.scrolled{box-shadow:0 1px 0 var(--line);height:68px}
+.logo{display:flex;align-items:baseline;gap:.55rem;line-height:1}
+.logo b{font-weight:700;font-size:1.7rem;letter-spacing:-.02em}
+.logo span{font-weight:300;font-size:.85rem;letter-spacing:.34em;text-transform:uppercase;color:var(--ink)}
+.nav .menu{display:flex;align-items:center;gap:clamp(1.4rem,2.6vw,2.8rem)}
+.nav .menu a{font-weight:500;font-size:.92rem;position:relative;padding:.4rem 0}
+.nav .menu a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--accent);transition:width .35s ease}
+.nav .menu a:hover::after{width:100%}
+.nav .enquire{font-weight:600}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
+.burger span{width:26px;height:2px;background:var(--ink);display:block;transition:.3s}
+
+/* ---------------- arc watermark ---------------- */
+.arc{position:absolute;pointer-events:none;z-index:1;opacity:.5}
+.arc svg{display:block;width:100%;height:100%}
+.arc circle,.arc path{fill:none;stroke:var(--ink);stroke-width:1;opacity:.18}
+.arc.light circle,.arc.light path{stroke:#fff;opacity:.45}
+
+/* rotated side label */
+.side-label{position:absolute;left:.4rem;writing-mode:vertical-rl;transform:rotate(180deg);
+  font-size:.66rem;font-weight:500;letter-spacing:.34em;text-transform:uppercase;color:var(--label);z-index:3}
+
+/* ---------------- HERO ---------------- */
+.hero{position:relative;height:calc(100svh - var(--nav-h));min-height:520px;overflow:hidden}
+.hero .media{position:absolute;inset:0}
+.hero .media img{animation:zoom 26s ease-out infinite alternate}
+@keyframes zoom{from{transform:scale(1)}to{transform:scale(1.09)}}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(90deg,rgba(20,19,17,.42),rgba(20,19,17,.05) 55%,transparent)}
+.hero .arc{top:-6%;left:-4%;width:min(46vw,520px);aspect-ratio:1}
+.hero-copy{position:absolute;left:var(--pad-x);bottom:clamp(2.4rem,7vh,5.5rem);z-index:3;color:#fff;max-width:40rem}
+.hero-copy h1{font-weight:700;font-size:clamp(3rem,8vw,6.6rem);line-height:.96;letter-spacing:-.02em}
+.hero-copy p{font-weight:400;font-size:clamp(1rem,1.4vw,1.25rem);margin-top:1.1rem;max-width:34ch}
+.hero .side-label{bottom:clamp(2.4rem,7vh,5.5rem);color:rgba(255,255,255,.85)}
+
+/* ---------------- TWO-UP GRID (flush) ---------------- */
+.duo{display:grid;grid-template-columns:1fr 1fr}
+.cell{position:relative;aspect-ratio:1/1;overflow:hidden;display:block}
+.cell img{transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+.cell:hover img{transform:scale(1.05)}
+.cell::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(20,19,17,.55),transparent 55%)}
+.cell .word{position:absolute;left:clamp(1.1rem,2.4vw,2.6rem);bottom:clamp(1rem,2.4vw,2.2rem);z-index:2;
+  color:#fff;font-size:clamp(2rem,4.6vw,3.6rem)}
+.cell .tag{position:absolute;left:clamp(1.1rem,2.4vw,2.6rem);bottom:clamp(.6rem,1.4vw,1.1rem);z-index:2;
+  color:rgba(255,255,255,.8);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+  opacity:0;transform:translateY(6px);transition:opacity .4s ease,transform .4s ease}
+.cell:hover .tag{opacity:1;transform:none}
+.cell:hover .word{bottom:clamp(1.7rem,3.4vw,3rem);transition:bottom .4s ease}
+
+/* ---------------- EDITORIAL TEXT BLOCK ---------------- */
+.statement{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+.statement .media{min-height:clamp(420px,70vh,760px)}
+.statement .text{padding:clamp(3rem,7vw,7rem) clamp(2rem,5vw,6rem);display:flex;flex-direction:column;justify-content:center;position:relative}
+.statement .arc{right:-12%;top:50%;transform:translateY(-50%);width:min(40vw,460px);aspect-ratio:1}
+.statement h2{font-weight:700;font-size:clamp(2rem,4.2vw,3.6rem);line-height:1.04;letter-spacing:-.02em;position:relative;z-index:2}
+.statement p{margin-top:1.6rem;max-width:46ch;color:var(--soft);font-weight:400;font-size:1.02rem;position:relative;z-index:2}
+
+/* ---------------- FULL-WIDTH FEATURE ---------------- */
+.feature{position:relative;height:clamp(60vh,82vh,860px);overflow:hidden}
+.feature .media{position:absolute;inset:0}
+.feature .media img{will-change:transform}
+.feature::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(20,19,17,.45),transparent 55%)}
+.feature .word{position:absolute;left:var(--pad-x);bottom:clamp(2rem,5vh,3.4rem);z-index:2;color:#fff;font-size:clamp(2.6rem,6vw,5rem)}
+
+/* ---------------- ABOUT + TESTIMONIALS ---------------- */
+.about{position:relative;background:var(--mist);padding:clamp(4rem,9vh,8rem) var(--pad-x)}
+.about .arc{right:6%;top:18%;width:min(34vw,420px);aspect-ratio:1}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.5rem,6vw,6rem);max-width:1500px;margin:0 auto;position:relative;z-index:2}
+.h-accent{font-weight:700;font-size:clamp(2.6rem,5.5vw,4.6rem);color:var(--accent);letter-spacing:-.02em;line-height:1}
+.about .statement-line{font-weight:600;font-size:clamp(1.3rem,2.2vw,1.85rem);line-height:1.3;margin:1.8rem 0 1.4rem;max-width:30ch}
+.about p.body{color:var(--soft);max-width:52ch;font-size:1rem}
+.about .side-label{top:clamp(4rem,9vh,8rem);color:var(--label)}
+
+/* testimonials */
+.reviews-label{font-weight:600;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--label);margin-bottom:1.4rem}
+.places{display:flex;flex-wrap:wrap;gap:1.6rem;margin-bottom:2.6rem}
+.places a{font-weight:600;font-size:.86rem;letter-spacing:.12em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.5rem}
+.places a svg{width:20px;height:8px}
+.counter{display:flex;align-items:center;gap:1rem;margin-bottom:1.8rem}
+.counter .n{font-weight:600;font-size:.86rem;color:var(--ink)}
+.counter .n.dim{color:var(--label)}
+.counter .rule{width:54px;height:1px;background:var(--ink);opacity:.5}
+.counter .arrows{margin-left:auto;display:flex;gap:1rem}
+.counter button{background:none;border:0;cursor:pointer;color:var(--ink);padding:.4rem;transition:transform .25s ease,opacity .25s}
+.counter button:hover{transform:translateX(2px)}
+.counter button:first-child:hover{transform:translateX(-2px)}
+.quote{min-height:9rem}
+.quote p{font-size:clamp(1.05rem,1.5vw,1.25rem);line-height:1.55;color:var(--ink);max-width:48ch}
+.quote .who{margin-top:1.4rem;font-weight:600}
+.quote .where{color:var(--soft);font-size:.92rem}
+.view-all{display:inline-flex;align-items:center;gap:.7rem;margin-top:2.4rem;font-weight:600;font-size:.84rem;letter-spacing:.12em;text-transform:uppercase}
+.view-all svg{width:30px;height:10px}
+
+/* ---------------- GALLERY ---------------- */
+.gallery{padding:clamp(4rem,9vh,8rem) var(--pad-x)}
+.gallery .head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:clamp(2rem,5vh,3.5rem);max-width:1500px;margin-left:auto;margin-right:auto}
+.gallery .head h2{font-weight:700;font-size:clamp(2.6rem,5.5vw,4.6rem);letter-spacing:-.02em;line-height:1}
+.gallery .head p{color:var(--soft);max-width:32ch}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;max-width:1500px;margin:0 auto}
+.gtile{position:relative;aspect-ratio:4/5;overflow:hidden}
+.gtile.wide{grid-column:span 2;aspect-ratio:auto}
+.gtile img{transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+.gtile:hover img{transform:scale(1.06)}
+.gtile::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(20,19,17,.5),transparent 55%);opacity:0;transition:opacity .45s ease}
+.gtile:hover::after{opacity:1}
+.gtile figcaption{position:absolute;left:1.2rem;bottom:1.1rem;z-index:2;color:#fff;opacity:0;transform:translateY(8px);transition:.45s ease}
+.gtile:hover figcaption{opacity:1;transform:none}
+.gtile figcaption b{font-weight:700;font-size:1.3rem;display:block;line-height:1.05}
+.gtile figcaption span{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;opacity:.85}
+
+/* ---------------- CONTACT ---------------- */
+.contact{position:relative;background:var(--ink);color:var(--paper);text-align:center;padding:clamp(5rem,12vh,10rem) var(--pad-x);overflow:hidden}
+.contact .arc{left:50%;top:50%;transform:translate(-50%,-50%);width:min(70vw,640px);aspect-ratio:1}
+.contact h2{font-weight:700;font-size:clamp(2.6rem,7vw,6rem);line-height:.98;letter-spacing:-.02em;position:relative;z-index:2}
+.contact p{position:relative;z-index:2;max-width:42ch;margin:1.6rem auto 2.4rem;color:rgba(255,255,255,.78)}
+.btn{position:relative;z-index:2;display:inline-flex;align-items:center;gap:.8rem;font-weight:600;font-size:.86rem;
+  letter-spacing:.14em;text-transform:uppercase;background:var(--paper);color:var(--ink);
+  padding:1.1rem 2.4rem;border-radius:2px;transition:background .35s,color .35s}
+.btn:hover{background:var(--accent);color:#fff}
+.contact .mail{position:relative;z-index:2;display:block;margin-top:2.2rem;font-weight:600;font-size:clamp(1.2rem,2.5vw,1.7rem)}
+
+/* ---------------- FOOTER ---------------- */
+.footer{background:#141311;color:rgba(255,255,255,.7);padding:clamp(3.5rem,8vh,6rem) var(--pad-x) 2.4rem}
+.footer-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:2.5rem;max-width:1500px;margin:0 auto}
+.footer .logo b{color:#fff}.footer .logo span{color:rgba(255,255,255,.7)}
+.footer .blurb{margin-top:1rem;max-width:24ch;font-size:.92rem}
+.footer h4{font-weight:600;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--label);margin-bottom:1.1rem}
+.footer ul{list-style:none}.footer li{margin-bottom:.6rem;font-size:.92rem}
+.footer a:hover{color:#fff}
+.signup{max-width:22rem}
+.signup .row{display:flex;border:1px solid rgba(255,255,255,.25);border-radius:2px;overflow:hidden;margin-top:1rem}
+.signup input{flex:1;background:none;border:0;color:#fff;padding:.8rem 1rem;font-family:var(--font);font-size:.9rem}
+.signup input::placeholder{color:rgba(255,255,255,.5)}
+.signup button{background:#fff;color:var(--ink);border:0;padding:0 1.2rem;font-weight:600;cursor:pointer;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase}
+.footer-base{max-width:1500px;margin:3rem auto 0;padding-top:1.6rem;border-top:1px solid rgba(255,255,255,.12);
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.76rem;letter-spacing:.04em;opacity:.7}
+
+/* ---------------- social rail ---------------- */
+.rail{position:fixed;right:clamp(.4rem,1.4vw,1.4rem);top:50%;transform:translateY(-50%);z-index:80;display:flex;flex-direction:column;gap:.7rem}
+.rail a{width:38px;height:38px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;transition:background .3s,transform .3s}
+.rail a:hover{background:var(--accent);transform:translateY(-2px)}
+.rail svg{width:16px;height:16px;fill:currentColor}
+
+/* ---------------- reveal ---------------- */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------------- mobile ---------------- */
+.mobile-menu{position:fixed;inset:0;z-index:95;background:var(--paper);display:flex;flex-direction:column;justify-content:center;gap:1.4rem;padding:var(--pad-x);transform:translateY(-100%);transition:transform .5s cubic-bezier(.16,1,.3,1);visibility:hidden}
+.mobile-menu.open{transform:none;visibility:visible}
+.mobile-menu a{font-weight:700;font-size:2.2rem;letter-spacing:-.01em}
+.mobile-menu .close{position:absolute;top:1.4rem;right:var(--pad-x);font-size:2.2rem;background:none;border:0;cursor:pointer}
+
+@media (max-width:880px){
+  .nav .menu{display:none}.burger{display:flex}
+  .duo{grid-template-columns:1fr}
+  .cell{aspect-ratio:4/3}
+  .statement{grid-template-columns:1fr}
+  .statement .media{min-height:60vh}
+  .about-grid{grid-template-columns:1fr;gap:3.5rem}
+  .grid{grid-template-columns:1fr 1fr;gap:.6rem}
+  .gtile.wide{grid-column:span 2}
+  .rail{flex-direction:row;top:auto;bottom:0;right:0;left:0;transform:none;justify-content:center;background:var(--paper);padding:.7rem;gap:1rem;box-shadow:0 -1px 0 var(--line)}
+  .side-label{display:none}
+}
+@media (max-width:520px){
+  .grid{grid-template-columns:1fr}.gtile.wide{grid-column:span 1}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .hero .media img{animation:none}
+}
+</style>
+</head>
+<body id="top">
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <a class="logo" href="#top" aria-label="Creative Green Landscaping home">
+    <b>creativegreen</b><span>Landscapes</span>
+  </a>
+  <nav class="menu" aria-label="Primary">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#projects">Projects</a>
+    <a href="#gallery">Gallery</a>
+    <a class="enquire" href="#contact">Enquire</a>
+  </nav>
+  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close" id="closeMenu" aria-label="Close menu">&times;</button>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#projects">Projects</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#contact">Enquire</a>
+</div>
+
+<main>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="arc light"><svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="98"/><circle cx="100" cy="100" r="74"/><circle cx="100" cy="100" r="50"/><path d="M2 150 L2 198 L50 198"/></svg></div>
+  <!-- REPLACE: luxury Adelaide outdoor entertaining space, natural daylight -->
+  <div class="media"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=2400&q=80&auto=format&fit=crop" alt="Contemporary Adelaide home with limestone walls, established garden and entertaining terrace" onerror="this.style.display='none'"></div>
+  <span class="side-label">Projects</span>
+  <div class="hero-copy">
+    <h1 class="word">Garden<br>+ Living</h1>
+    <p>Considered outdoor spaces for Adelaide homes, designed and built by one team.</p>
+  </div>
+</section>
+
+<!-- ================= SERVICES AS LABELLED GRID ================= -->
+<section id="services" aria-label="Services">
+  <div class="duo">
+    <a class="cell" href="#contact"><!-- REPLACE -->
+      <div class="media"><img src="https://images.unsplash.com/photo-1558521958-0a228e77fc99?w=1400&q=80&auto=format&fit=crop" alt="Landscape construction across a residential garden" onerror="this.style.display='none'"></div>
+      <span class="word">Construction.</span><span class="tag">End to end, one team</span>
+    </a>
+    <a class="cell" href="#contact"><!-- REPLACE -->
+      <div class="media"><img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=1400&q=80&auto=format&fit=crop" alt="Designed garden with structured planting and clean lines" onerror="this.style.display='none'"></div>
+      <span class="word">Design.</span><span class="tag">Drawn for how you live</span>
+    </a>
+  </div>
+  <div class="duo">
+    <a class="cell" href="#contact"><!-- REPLACE -->
+      <div class="media"><img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?w=1400&q=80&auto=format&fit=crop" alt="Stacked stone retaining wall holding a terraced garden" onerror="this.style.display='none'"></div>
+      <span class="word">Retaining.</span><span class="tag">Stone that holds for good</span>
+    </a>
+    <a class="cell" href="#contact"><!-- REPLACE -->
+      <div class="media"><img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1400&q=80&auto=format&fit=crop" alt="Natural stone and limestone paving" onerror="this.style.display='none'"></div>
+      <span class="word">Paving.</span><span class="tag">Limestone, stone, crazy pave</span>
+    </a>
+  </div>
+</section>
+
+<!-- ================= EDITORIAL STATEMENT ================= -->
+<section class="statement">
+  <!-- REPLACE: poolside entertaining detail, natural daylight -->
+  <div class="media"><img src="https://images.unsplash.com/photo-1605146769289-440113cc3d00?w=1600&q=80&auto=format&fit=crop" alt="Poolside entertaining area with stone walls and feature lighting" onerror="this.style.display='none'"></div>
+  <div class="text">
+    <div class="arc"><svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="98"/><circle cx="100" cy="100" r="72"/><circle cx="100" cy="100" r="46"/></svg></div>
+    <h2 class="reveal">Good gardens are built once, and lived in for years.</h2>
+    <p class="reveal">We take on a small number of gardens each year and handle design and construction under one roof. The idea you fall for is the garden you end up with. Stone, timber, water and planting, drawn together with patience and built to settle in and improve with every season.</p>
+  </div>
+</section>
+
+<!-- ================= FULL-WIDTH FEATURE ================= -->
+<section class="feature" id="projects">
+  <span class="side-label" style="color:rgba(255,255,255,.85)">Our work</span>
+  <!-- REPLACE: native garden / planting feature, natural daylight -->
+  <div class="media"><img src="https://images.unsplash.com/photo-1597149960419-e0d6b5e3a4f6?w=2400&q=80&auto=format&fit=crop" alt="Native Australian garden with established planting against a concrete wall" onerror="this.style.display='none'"></div>
+  <span class="word">Planting.</span>
+</section>
+
+<!-- ================= TWO-UP GRID ================= -->
+<section aria-label="More services">
+  <div class="duo">
+    <a class="cell" href="#contact"><!-- REPLACE -->
+      <div class="media"><img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1400&q=80&auto=format&fit=crop" alt="Timber decking sitting level with the living floor" onerror="this.style.display='none'"></div>
+      <span class="word">Decking.</span><span class="tag">Timber, level with the home</span>
+    </a>
+    <a class="cell" href="#contact"><!-- REPLACE -->
+      <div class="media"><img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=1400&q=80&auto=format&fit=crop" alt="Outdoor living and entertaining area at dusk with feature lighting" onerror="this.style.display='none'"></div>
+      <span class="word">Outdoor Living.</span><span class="tag">Kitchens, pools, lighting</span>
+    </a>
+  </div>
+</section>
+
+<!-- ================= ABOUT + TESTIMONIALS ================= -->
+<section class="about" id="about">
+  <span class="side-label">Who we are</span>
+  <div class="arc"><svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="98"/><circle cx="100" cy="100" r="70"/><circle cx="100" cy="100" r="42"/><path d="M150 2 L198 2 L198 50"/></svg></div>
+  <div class="about-grid">
+    <div class="reveal">
+      <h2 class="h-accent">About.</h2>
+      <p class="statement-line">We build gardens that feel like a natural part of the home, made for the way you actually live outside.</p>
+      <p class="body">Creative Green is a small Adelaide studio working across the city and the Hills. We believe a garden is worth doing slowly and doing once. That means honest materials, levels that work with the land rather than against it, and planting chosen to look better in ten years than it does on handover day.</p>
+    </div>
+    <div class="reveal">
+      <h2 class="h-accent">Reviews.</h2>
+      <p class="reviews-label">Google reviews</p>
+      <div class="places">
+        <a href="#">Toorak Gardens <svg viewBox="0 0 30 10"><path d="M0 5 H26 M22 1 L27 5 L22 9" stroke="currentColor" fill="none" stroke-width="1"/></svg></a>
+        <a href="#">Stirling <svg viewBox="0 0 30 10"><path d="M0 5 H26 M22 1 L27 5 L22 9" stroke="currentColor" fill="none" stroke-width="1"/></svg></a>
+        <a href="#">Burnside <svg viewBox="0 0 30 10"><path d="M0 5 H26 M22 1 L27 5 L22 9" stroke="currentColor" fill="none" stroke-width="1"/></svg></a>
+      </div>
+      <div class="counter">
+        <span class="n" id="cNow">01</span><span class="rule"></span><span class="n dim" id="cTotal">03</span>
+        <div class="arrows">
+          <button id="prev" aria-label="Previous review"><svg viewBox="0 0 30 10" width="30" height="10"><path d="M30 5 H4 M8 1 L3 5 L8 9" stroke="currentColor" fill="none" stroke-width="1"/></svg></button>
+          <button id="next" aria-label="Next review"><svg viewBox="0 0 30 10" width="30" height="10"><path d="M0 5 H26 M22 1 L27 5 L22 9" stroke="currentColor" fill="none" stroke-width="1"/></svg></button>
+        </div>
+      </div>
+      <!-- REPLACE testimonials with real client reviews -->
+      <div class="quote" id="quote">
+        <p id="qText">The garden completely changed how we use the back of the house. We are out there every evening now, and it still looks better each year.</p>
+        <div class="who" id="qWho">Hannah Reid</div>
+        <div class="where" id="qWhere">Toorak Gardens, SA</div>
+      </div>
+      <a class="view-all" href="#">View all reviews <svg viewBox="0 0 30 10"><path d="M0 5 H26 M22 1 L27 5 L22 9" stroke="currentColor" fill="none" stroke-width="1"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section class="gallery" id="gallery">
+  <div class="head">
+    <h2 class="reveal">Projects.</h2>
+    <p class="reveal">A small number of gardens each year, built to last decades rather than seasons.</p>
+  </div>
+  <div class="grid">
+    <!-- REPLACE every gallery image with completed-project photography -->
+    <figure class="gtile wide reveal"><div class="media"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80&auto=format&fit=crop" alt="Limestone courtyard with olive trees, Toorak Gardens" onerror="this.style.display='none'"></div><figcaption><b>Toorak Gardens</b><span>Courtyard</span></figcaption></figure>
+    <figure class="gtile reveal"><div class="media"><img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?w=1000&q=80&auto=format&fit=crop" alt="Terraced stone retaining walls, Stirling" onerror="this.style.display='none'"></div><figcaption><b>Stirling</b><span>Retaining</span></figcaption></figure>
+    <figure class="gtile reveal"><div class="media"><img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=1000&q=80&auto=format&fit=crop" alt="Structured garden design, Burnside" onerror="this.style.display='none'"></div><figcaption><b>Burnside</b><span>Garden Design</span></figcaption></figure>
+    <figure class="gtile reveal"><div class="media"><img src="https://images.unsplash.com/photo-1605146769289-440113cc3d00?w=1000&q=80&auto=format&fit=crop" alt="Pool and outdoor kitchen, Glenelg" onerror="this.style.display='none'"></div><figcaption><b>Glenelg</b><span>Outdoor Living</span></figcaption></figure>
+    <figure class="gtile wide reveal"><div class="media"><img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1600&q=80&auto=format&fit=crop" alt="Timber decking and paving detail, Unley" onerror="this.style.display='none'"></div><figcaption><b>Unley</b><span>Decking &amp; Paving</span></figcaption></figure>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="arc light"><svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="98"/><circle cx="100" cy="100" r="74"/><circle cx="100" cy="100" r="50"/><circle cx="100" cy="100" r="26"/></svg></div>
+  <h2>Let's plan<br>your garden.</h2>
+  <p>Tell us about your space and how you want to use it. We will arrange a time to walk the site together.</p>
+  <!-- House style: email-led, no phone as primary. REPLACE email with client address. -->
+  <a class="btn" href="mailto:hello@creativegreen.com.au?subject=New%20garden%20enquiry">Start a project</a>
+  <a class="mail" href="mailto:hello@creativegreen.com.au">hello@creativegreen.com.au</a>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <span class="logo"><b>creativegreen</b><span>Landscapes</span></span>
+      <p class="blurb">Landscape construction and garden design across Adelaide and the Hills.</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Landscape Construction</a></li>
+        <li><a href="#services">Garden Design</a></li>
+        <li><a href="#services">Retaining &amp; Paving</a></li>
+        <li><a href="#services">Decking &amp; Outdoor Living</a></li>
+      </ul>
+    </div>
+    <div class="signup">
+      <h4>Stay in touch</h4>
+      <p style="font-size:.92rem">Occasional notes on finished gardens and seasonal planting.</p>
+      <!-- REPLACE action with Web3Forms / preferred handler -->
+      <div class="row">
+        <input type="email" placeholder="Email address" aria-label="Email address">
+        <button type="button">Join</button>
+      </div>
+    </div>
+  </div>
+  <div class="footer-base">
+    <span>&copy; <span id="yr"></span> Creative Green Landscaping &middot; Adelaide, South Australia</span>
+    <span>Landscaping Adelaide &middot; Garden Design &middot; Retaining Walls &middot; Site by The Service Edit</span>
+  </div>
+</footer>
+
+<!-- ================= SOCIAL RAIL ================= -->
+<div class="rail" aria-label="Social links">
+  <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 9h3V6h-3c-2 0-3 1-3 3v2H9v3h2v6h3v-6h2.5l.5-3H14V9.5c0-.4.2-.5.6-.5z"/></svg></a>
+  <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 3.3.15 4.8 1.7 4.96 4.96.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.15 3.25-1.66 4.8-4.96 4.96-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-3.3-.15-4.8-1.7-4.96-4.96C2.05 15.6 2.04 15.2 2.04 12s0-3.6.07-4.9C2.26 3.85 3.77 2.3 7.07 2.14 8.4 2.08 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.5 0-4.76.07-2.4.1-3.3 1-3.4 3.4C3.77 8.5 3.76 8.8 3.76 12s0 3.5.07 4.76c.1 2.4 1 3.3 3.4 3.4 1.27.06 1.6.07 4.76.07s3.5 0 4.76-.07c2.4-.1 3.3-1 3.4-3.4.06-1.27.07-1.6.07-4.76s0-3.5-.07-4.76c-.1-2.4-1-3.3-3.4-3.4C15.5 4 15.15 4 12 4zm0 3.05A4.95 4.95 0 1 0 16.95 12 4.95 4.95 0 0 0 12 7.05zm0 8.16A3.2 3.2 0 1 1 15.2 12 3.2 3.2 0 0 1 12 15.2zm5.14-8.4a1.16 1.16 0 1 0 1.16 1.16 1.16 1.16 0 0 0-1.16-1.16z"/></svg></a>
+  <a href="mailto:hello@creativegreen.com.au" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.2L4.3 7H19.7zM4 8.3V17h16V8.3l-8 5z"/></svg></a>
+</div>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LandscapingBusiness","name":"Creative Green Landscaping","description":"Landscape construction and garden design across Adelaide.","areaServed":"Adelaide, South Australia","email":"hello@creativegreen.com.au","url":"https://www.creativegreen.com.au/","address":{"@type":"PostalAddress","addressLocality":"Adelaide","addressRegion":"SA","addressCountry":"AU"},"knowsAbout":["Landscape Construction","Garden Design","Retaining Walls","Paving","Decking","Planting","Irrigation","Outdoor Living"]}
+</script>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nav = document.getElementById('nav');
+  function onScroll(){ nav.classList.toggle('scrolled', window.scrollY > 40); }
+  onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+
+  var burger=document.getElementById('burger'), menu=document.getElementById('mobileMenu'), close=document.getElementById('closeMenu');
+  burger.addEventListener('click',function(){menu.classList.add('open');burger.setAttribute('aria-expanded','true');});
+  close.addEventListener('click',function(){menu.classList.remove('open');burger.setAttribute('aria-expanded','false');});
+  menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){menu.classList.remove('open');});});
+
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+  /* testimonials carousel (placeholder content) */
+  var reviews=[
+    {t:"The garden completely changed how we use the back of the house. We are out there every evening now, and it still looks better each year.",w:"Hannah Reid",l:"Toorak Gardens, SA"},
+    {t:"One team from the first sketch through to the last plant. Everything we were shown in the design is exactly what we ended up with.",w:"David Marshall",l:"Stirling, SA"},
+    {t:"Considered, calm and clearly built to last. The stonework alone gets a comment from everyone who visits.",w:"Priya Nair",l:"Burnside, SA"}
+  ];
+  var i=0;
+  function pad(n){return (n<10?'0':'')+n;}
+  function render(){
+    document.getElementById('qText').textContent=reviews[i].t;
+    document.getElementById('qWho').textContent=reviews[i].w;
+    document.getElementById('qWhere').textContent=reviews[i].l;
+    document.getElementById('cNow').textContent=pad(i+1);
+    document.getElementById('cTotal').textContent=pad(reviews.length);
+  }
+  document.getElementById('next').addEventListener('click',function(){i=(i+1)%reviews.length;render();});
+  document.getElementById('prev').addEventListener('click',function(){i=(i-1+reviews.length)%reviews.length;render();});
+  render();
+
+  /* gentle parallax on the full-width feature */
+  if(!reduce && window.innerWidth>880){
+    var fimg=document.querySelector('.feature .media img'); var t=false;
+    function px(){ if(fimg){var r=fimg.getBoundingClientRect(); if(r.bottom>0&&r.top<innerHeight){var o=(r.top+r.height/2-innerHeight/2)/innerHeight; fimg.style.transform='scale(1.1) translateY('+(o*-26)+'px)';}} t=false; }
+    window.addEventListener('scroll',function(){if(!t){requestAnimationFrame(px);t=true;}},{passive:true}); px();
+  }
+
+  document.getElementById('yr').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
