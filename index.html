@@ -112,17 +112,11 @@ a{color:inherit;text-decoration:none}
 .cell:hover .cell-cta,.cell:focus-within .cell-cta{opacity:1;transform:none}
 
 /* ---------------- EDITORIAL TEXT BLOCK ---------------- */
-.statement{padding:clamp(4rem,11vh,9rem) var(--pad-x);text-align:center}
-.statement .text{max-width:48rem;margin:0 auto}
-.statement h2{font-weight:700;font-size:clamp(2rem,4.2vw,3.6rem);line-height:1.06;letter-spacing:-.02em}
-.statement p{margin:1.6rem auto 0;max-width:54ch;color:var(--soft);font-weight:400;font-size:1.02rem}
-
-/* ---------------- FULL-WIDTH FEATURE ---------------- */
-.feature{position:relative;height:clamp(60vh,82vh,860px);overflow:hidden}
-.feature .media{position:absolute;inset:0}
-.feature .media img{will-change:transform}
-.feature::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(20,19,17,.45),transparent 55%)}
-.feature .word{position:absolute;left:var(--pad-x);bottom:clamp(2rem,5vh,3.4rem);z-index:2;color:#fff;font-size:clamp(2.6rem,6vw,5rem)}
+.statement{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+.statement .media{min-height:clamp(420px,70vh,760px)}
+.statement .text{padding:clamp(3rem,7vw,7rem) clamp(2rem,5vw,6rem);display:flex;flex-direction:column;justify-content:center}
+.statement h2{font-weight:700;font-size:clamp(2rem,4.2vw,3.6rem);line-height:1.04;letter-spacing:-.02em}
+.statement p{margin-top:1.6rem;max-width:46ch;color:var(--soft);font-weight:400;font-size:1.02rem}
 
 /* ---------------- ABOUT + TESTIMONIALS ---------------- */
 .about{position:relative;background:var(--mist);padding:clamp(4rem,9vh,8rem) var(--pad-x)}
@@ -235,6 +229,8 @@ a{color:inherit;text-decoration:none}
   .logo-mark{height:34px}
   body{padding-bottom:64px}
   .duo{grid-template-columns:1fr}
+  .statement{grid-template-columns:1fr}
+  .statement .media{min-height:56vh}
   /* service tiles: image on top, full list shown below it (no hover needed) */
   .cell{aspect-ratio:auto}
   .cell .media{aspect-ratio:16/10}
@@ -365,17 +361,12 @@ a{color:inherit;text-decoration:none}
 
 <!-- ================= EDITORIAL STATEMENT ================= -->
 <section class="statement">
+  <!-- REPLACE with the chosen photo for this section -->
+  <div class="media"><img src="assets/statement.jpg" alt="A completed Creative Green garden" onerror="this.style.display='none'"></div>
   <div class="text">
     <h2 class="reveal">Good gardens are built once, and lived in for years.</h2>
     <p class="reveal">We take on a small number of gardens each year and handle design and construction under one roof. The idea you fall for is the garden you end up with. Stone, timber, water and planting, drawn together with patience and built to settle in and improve with every season.</p>
   </div>
-</section>
-
-<!-- ================= FULL-WIDTH FEATURE ================= -->
-<section class="feature">
-  <span class="side-label" style="color:rgba(255,255,255,.85)">Our work</span>
-  <!-- REPLACE: full-width project / planting feature, natural daylight -->
-  <div class="media"><img src="https://images.unsplash.com/photo-1597149960419-e0d6b5e3a4f6?w=2400&q=80&auto=format&fit=crop" alt="Established Adelaide garden with mature planting" onerror="this.style.display='none'"></div>
 </section>
 
 <!-- ================= ABOUT + TESTIMONIALS ================= -->
@@ -541,13 +532,6 @@ a{color:inherit;text-decoration:none}
 
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
   document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
-
-  /* gentle parallax on the full-width feature */
-  if(!reduce && window.innerWidth>880){
-    var fimg=document.querySelector('.feature .media img'); var t=false;
-    function px(){ if(fimg){var r=fimg.getBoundingClientRect(); if(r.bottom>0&&r.top<innerHeight){var o=(r.top+r.height/2-innerHeight/2)/innerHeight; fimg.style.transform='scale(1.1) translateY('+(o*-26)+'px)';}} t=false; }
-    window.addEventListener('scroll',function(){if(!t){requestAnimationFrame(px);t=true;}},{passive:true}); px();
-  }
 
   /* before / after gallery: press to see the next garden */
   document.querySelectorAll('[data-gallery]').forEach(function(g){
